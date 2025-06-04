@@ -10,6 +10,7 @@ adk06a-oauth-integration-connectors/.env*
 adk06b-oauth-demo-allegro/.env*
 adk06b-oauth-demo-allegro/.schemas.py
 adk-deployment-01-agentengine/*.html
+instavibe/.env
 */*.json
 result
 */*.pyc
