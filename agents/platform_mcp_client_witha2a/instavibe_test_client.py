@@ -12,7 +12,6 @@ import asyncio
 
 load_dotenv()
 
-
 async def async_main():
   session_service = InMemorySessionService()
   # Artifact service might not be needed for this example

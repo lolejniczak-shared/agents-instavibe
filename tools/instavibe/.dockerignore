@@ -9,3 +9,5 @@ env/
 venv/
 .git
 .gitignore
+1_instavibe_test.py
+2_deploy_mcp_server.py

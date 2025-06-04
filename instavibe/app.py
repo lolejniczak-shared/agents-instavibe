@@ -18,8 +18,8 @@ app.register_blueprint(ally_bp)
 
 load_dotenv()
 # --- Spanner Configuration ---
-INSTANCE_ID = "instavibe-graph-instance" # Replace if different
-DATABASE_ID = "graphdb" # Replace if different
+INSTANCE_ID = os.environ.get("SPANNER_INSTANCE_ID") # Replace if different
+DATABASE_ID = os.environ.get("SPANNER_DATABASE_ID") # Replace if different
 PROJECT_ID = os.environ.get("GOOGLE_CLOUD_PROJECT")
 APP_HOST = os.environ.get("APP_HOST", "0.0.0.0")
 APP_PORT = os.environ.get("APP_PORT","8080")

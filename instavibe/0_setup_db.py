@@ -7,10 +7,14 @@ import time
 from google.cloud import spanner
 from google.api_core import exceptions
 
+
+import os
+from dotenv import load_dotenv
+load_dotenv()
+
 # --- Configuration ---
 INSTANCE_ID = os.environ.get("SPANNER_INSTANCE_ID","instavibe-graph-instance")
 DATABASE_ID = os.environ.get("SPANNER_DATABASE_ID","graphdb")
-
 PROJECT_ID = os.environ.get("GOOGLE_CLOUD_PROJECT")
 
 # --- Spanner Client Initialization ---

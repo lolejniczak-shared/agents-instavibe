@@ -1,16 +1,15 @@
-from google.adk.agents import Agent
+from google.adk.agents import LlmAgent
 from google.adk.tools import google_search
 import os
 from dotenv import load_dotenv
 
 load_dotenv()
 
-root_agent = Agent(
+root_agent = LlmAgent(
     name="location_search_agent",
     model="gemini-2.0-flash",
     description="Agent tasked with generating creative and fun dating plan suggestions",
     instruction="""
-
         You are a specialized AI assistant tasked with generating creative and fun plan suggestions.
 
         **Request:**
@@ -26,7 +25,21 @@ root_agent = Agent(
         5.  **Location Details:** For each place or event mentioned within a plan, you MUST provide its name, precise latitude, precise longitude, and a brief, helpful description.
 
         **Output Format:**
-        RETURN PLAN
+        Return your response *exclusively* as a single JSON object. This object should contain a top-level key, "fun_plans", which holds a plan objects. Each plan object in the list must strictly adhere to the following structure:
+
+        ```json
+        {
+          "plan_description": "A summary of the overall dating plan, consisting of **exactly three sentences**. Craft these sentences in a friendly, enthusiastic, and conversational tone, as if you're suggesting this awesome idea to a close friend. Make it sound exciting and personal, highlighting the positive aspects and appeal of the plan without explicitly mentioning budget or listing interest categories.",
+          "locations_and_activities": [
+              {
+              "name": "Name of the specific place or event",
+              "latitude": 0.000000,  // Replace with actual latitude
+              "longitude": 0.000000, // Replace with actual longitude
+              "description": "A brief description of this place/event, why it's suitable for the date, and any specific details for the weekend (e.g., opening hours, event time)."
+              }
+              // Add more location/activity objects here if the plan involves multiple stops/parts
+          ]
+        }
 
     """,
     tools=[google_search]
